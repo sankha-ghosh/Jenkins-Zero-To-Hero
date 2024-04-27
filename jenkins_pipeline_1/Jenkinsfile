@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'javac HelloWorld.java'
+            }
+        }
+        stage('Dockerize') {
+            steps {
+                sh 'docker build -t my-java-app .'
+            }
+        }
+        stage('Run Docker Image') {
+            steps {
+                sh 'docker run my-java-app'
+            }
+        }
+    }
+}
