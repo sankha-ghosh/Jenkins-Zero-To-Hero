@@ -11,6 +11,8 @@ pipeline {
         }
         stage('Dockerize') {
             steps {
+                sh 'pwd'
+                sh 'ls -la'
                 sh 'docker build -t my-java-app .'
             }
         }
